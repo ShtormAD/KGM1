@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KGM1
@@ -14,6 +8,8 @@ namespace KGM1
     {
         static private Graphics g;
         static private Random rnd;
+
+        //Инициализация
         public Form1()
         {
             InitializeComponent();
@@ -21,14 +17,15 @@ namespace KGM1
             rnd = new Random();
         }
 
-        private void btnPnt_Click(object sender, EventArgs e)
+        //Кнопка точки
+        private void btnPnt_Click(object sender, EventArgs e) 
         {
             SolidBrush sb = new SolidBrush(getRndCol());
             g.FillEllipse(sb, new Rectangle( 10+ rnd.Next(380), 10 + rnd.Next(380), 3,3));
-            //g.DrawEllipse(myPen, new Rectangle(0, 0, 200, 300));
             sb.Dispose();
         }
 
+        //Кнопка линии
         private void btnLine_Click(object sender, EventArgs e)
         {
             Pen myPen = new Pen(getRndCol());
@@ -36,6 +33,7 @@ namespace KGM1
             myPen.Dispose();
         }
 
+        //Кнопка прямоугольник
         private void btnRect_Click(object sender, EventArgs e)
         {
             SolidBrush sb = new SolidBrush(getRndCol());
@@ -43,6 +41,7 @@ namespace KGM1
             sb.Dispose();
         }
 
+        //Кнопка квадрата
         private void btnSqr_Click(object sender, EventArgs e)
         {
             int a = rnd.Next(200);
@@ -51,6 +50,7 @@ namespace KGM1
             sb.Dispose();
         }
 
+        //Кнопка круга
         private void btnCircle_Click(object sender, EventArgs e)
         {
             int a = rnd.Next(200);
@@ -59,14 +59,16 @@ namespace KGM1
             sb.Dispose();
         }
 
-        private Color getRndCol()
-        {
-            return Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255));
-        }
-
+        //Кнопка очистки
         private void btnClr_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
+        }
+
+        //Рандомный цвет
+        private Color getRndCol()
+        {
+            return Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255));
         }
     }
 }
